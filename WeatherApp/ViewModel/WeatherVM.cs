@@ -8,7 +8,6 @@ namespace WeatherApp.ViewModel
     public class WeatherVM : INotifyPropertyChanged
     {
         private string query;
-
         public string Query
         {
             get { return query; }
