@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
+using WeatherApp.Model;
 
 namespace WeatherApp.ViewModel
 {
@@ -15,6 +16,30 @@ namespace WeatherApp.ViewModel
             {
                 query = value;
                 OnPropertyChanged("Query");
+            }
+        }
+
+        private Weather weather;
+
+        public Weather Weather
+        {
+            get { return weather; }
+            set
+            {
+                weather = value;
+                OnPropertyChanged("CurrentConditions");
+            }
+        }
+
+        private City selectedCity;
+
+        public City SelectedCity
+        {
+            get { return selectedCity; }
+            set
+            {
+                selectedCity = value;
+                OnPropertyChanged("SelectedCity");
             }
         }
 

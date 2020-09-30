@@ -3,22 +3,25 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="clr-namespace:WeatherApp.ViewModel"
         xmlns:local="clr-namespace:WeatherApp.View"
         mc:Ignorable="d"
         Title="WeatherWindow" Height="600" Width="400">
     <Window.Resources>
         <ResourceDictionary>
             <SolidColorBrush x:Key="lightTextColor" Color="#f4f4f8"/>
+            <vm:WeatherVM x:Key="vm"/>
         </ResourceDictionary>
     </Window.Resources>
-    <Grid>
+    
+    <Grid DataContext="{StaticResource vm}">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <StackPanel Margin="20">
             <TextBlock Text="Search for a city"/>
-            <TextBox/>
+            <TextBox Text="{Binding Query, Mode=TwoWay}"/>
             <Button Margin="0,10"
                     Content="Search"/>
             <ListView>
@@ -32,17 +35,18 @@
             </ListView>
         </StackPanel>
         <Grid Grid.Row="1"
-              Background="#4392f1">
+              Background="#4392f1"
+              DataContext="{Binding Weather}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
             <StackPanel Margin="0,10">
-                <TextBlock Text="San Francisco"
+                <TextBlock Text="{Binding Source={StaticResource vm}, Path=SelectedCity.LocalizedName}"
                            Foreground="{StaticResource lightTextColor}"
                            FontSize="20"
                            Margin="20,0"/>
-                <TextBlock Text="overcast"
+                <TextBlock Text="{Binding WeatherText}"
                            Foreground="{StaticResource lightTextColor}"
                            FontSize="18"
                            Margin="20,0"/>
@@ -52,7 +56,7 @@
                        Foreground="{StaticResource lightTextColor}"
                        FontSize="30"
                        Margin="20,0"
-                       Text="11 C"/>
+                       Text="{Binding Temperature.Metric.Value, StringFormat={}{0}°C}"/>
         </Grid>
     </Grid>
 </Window>
