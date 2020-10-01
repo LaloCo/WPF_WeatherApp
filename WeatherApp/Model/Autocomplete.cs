@@ -20,9 +20,4 @@ namespace WeatherApp.Model
         public Area Country { get; set; }
         public Area AdministrativeArea { get; set; }
     }
-
-    public class Autocomplete
-    {
-        public List<City> Cities { get; set; }
-    }
 }

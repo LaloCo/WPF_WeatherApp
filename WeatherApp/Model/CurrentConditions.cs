@@ -30,9 +30,4 @@ namespace WeatherApp.Model
         public string MobileLink { get; set; }
         public string Link { get; set; }
     }
-
-    public class CurrentConditions
-    {
-        public List<Weather> Conditions { get; set; }
-    }
 }
