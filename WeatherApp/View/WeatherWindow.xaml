@@ -4,12 +4,14 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:vm="clr-namespace:WeatherApp.ViewModel"
+        xmlns:converters="clr-namespace:WeatherApp.ViewModel.Converters"
         xmlns:local="clr-namespace:WeatherApp.View"
         mc:Ignorable="d"
         Title="WeatherWindow" Height="600" Width="400">
     <Window.Resources>
         <ResourceDictionary>
             <SolidColorBrush x:Key="lightTextColor" Color="#f4f4f8"/>
+            <converters:BoolToRainConverter x:Key="boolToRain"/>
             <vm:WeatherVM x:Key="vm"/>
         </ResourceDictionary>
     </Window.Resources>
@@ -52,6 +54,10 @@
                 <TextBlock Text="{Binding WeatherText}"
                            Foreground="{StaticResource lightTextColor}"
                            FontSize="18"
+                           Margin="20,0"/>
+                <TextBlock Text="{Binding HasPrecipitation, Converter={StaticResource boolToRain}}"
+                           Foreground="{StaticResource lightTextColor}"
+                           FontSize="16"
                            Margin="20,0"/>
             </StackPanel>
             <TextBlock Grid.Column="1"

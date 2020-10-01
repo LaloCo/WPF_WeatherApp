@@ -63,6 +63,7 @@ namespace WeatherApp.ViewModel
                 Weather = new Weather
                 {
                     WeatherText = "Partly cloudy",
+                    HasPrecipitation = true,
                     Temperature = new Temperature
                     {
                         Metric = new Values
