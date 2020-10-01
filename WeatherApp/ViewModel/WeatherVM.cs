@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
 using WeatherApp.Model;
+using WeatherApp.ViewModel.Helpers;
 
 namespace WeatherApp.ViewModel
 {
@@ -64,6 +65,11 @@ namespace WeatherApp.ViewModel
                     }
                 };
             }
+        }
+
+        public async void SearchCities()
+        {
+            var cities = await AccuWeatherAPI.AutocompleteCities(Query);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
