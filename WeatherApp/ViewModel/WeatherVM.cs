@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Text;
 using WeatherApp.Model;
@@ -47,6 +48,8 @@ namespace WeatherApp.ViewModel
 
         public SearchCommand SearchCommand { get; set; }
 
+        public ObservableCollection<City> Cities { get; set; }
+
         public WeatherVM()
         {
             if (DesignerProperties.GetIsInDesignMode(new System.Windows.DependencyObject()))
@@ -70,11 +73,18 @@ namespace WeatherApp.ViewModel
             }
 
             SearchCommand = new SearchCommand(this);
+            Cities = new ObservableCollection<City>();
         }
 
         public async void SearchCities()
         {
             var cities = await AccuWeatherAPI.AutocompleteCities(Query);
+
+            Cities.Clear();
+            foreach(var city in cities)
+            {
+                Cities.Add(city);
+            }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
