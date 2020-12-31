@@ -80,10 +80,10 @@ namespace WeatherApp.ViewModel
 
         private async void GetCurrentConditions()
         {
-            Query = string.Empty;
-            Cities.Clear();
+            // Query = string.Empty;
+            // Cities.Clear();
 
-            Weather = await AccuWeatherAPI.GetCurrentConditions(SelectedCity.Key);
+            //Weather = await AccuWeatherAPI.GetCurrentConditions(SelectedCity.Key);
         }
 
         public async void SearchCities()

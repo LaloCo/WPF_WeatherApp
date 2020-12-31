@@ -51,11 +51,11 @@
                            Foreground="{StaticResource lightTextColor}"
                            FontSize="20"
                            Margin="20,0"/>
-                <TextBlock Text="{Binding WeatherText}"
+                <TextBlock Text="{Binding Source={StaticResource vm}, Path=Weather.WeatherText}"
                            Foreground="{StaticResource lightTextColor}"
                            FontSize="18"
                            Margin="20,0"/>
-                <TextBlock Text="{Binding HasPrecipitation, Converter={StaticResource boolToRain}}"
+                <TextBlock Text="{Binding Source={StaticResource vm}, Path=Weather.HasPrecipitation, Converter={StaticResource boolToRain}}"
                            Foreground="{StaticResource lightTextColor}"
                            FontSize="16"
                            Margin="20,0"/>
